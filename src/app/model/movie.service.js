@@ -5,12 +5,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 exports.MovieService = void 0;
 var core_1 = require("@angular/core");
 var MovieService = /** @class */ (function () {
-    function MovieService() {
+    function MovieService(http) {
+        this.http = http;
     }
+    MovieService.prototype.getSingleMovie = function (id) {
+        return this.http.get('http://www.omdbapi.com/?i=tt3896198&apikey=760c1292');
+    };
+    MovieService.prototype.getMovieCollection = function () {
+        return null;
+    };
     MovieService = __decorate([
         core_1.Injectable({
             providedIn: 'root'

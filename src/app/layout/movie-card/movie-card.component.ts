@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+
+export interface MovieCardData {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+}
 
 @Component({
   selector: 'app-movie-card',
@@ -6,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent implements OnInit {
+  @Input() movie: MovieCardData;
 
   constructor() { }
 

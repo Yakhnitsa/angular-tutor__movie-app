@@ -1,0 +1,5 @@
+
+<button *ngFor="let cat of movieCategories" class="btn btn-outline-primary btn-block"
+        [class.active]="cat == selectedCategory" (click)="changeCategory(cat)">
+  {{cat}}
+</button>
