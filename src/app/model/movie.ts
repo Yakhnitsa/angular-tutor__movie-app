@@ -1,19 +1,21 @@
 export interface Movie {
+  id: string;
   title: string;
   poster: string;
-  year: string;
-  rated: string;
+  rated: number;
   released: string;
 }
 
 export interface MovieFull extends Movie{
-  Runtime: string;
-  Genre: string;
-  Director: string;
-  Writer: string;
-  Actors: string;
-  Plot: string;
-  Language: string;
-  Country: string;
-  Awards: string;
+  tagline: string;
+  overview: string;
+  runtime: string;
+  genre: string;
+  director: string;
+  writer: string;
+  actors: string;
+  plot: string;
+  language: string;
+  country: string;
+  awards: string;
 }
