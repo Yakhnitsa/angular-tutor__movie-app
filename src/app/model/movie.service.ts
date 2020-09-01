@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {Movie} from './movie';
+import {Movie, MovieFull} from './movie';
+import {MockedDatasource} from './datasource/mocked.datasource';
+import {TheMovieDatasource} from './datasource/themoviedb.datasource';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
 
-  constructor(private http: HttpClient) {
+  constructor(private datasource: TheMovieDatasource) {
   }
 
-  public getSingleMovie(id): Observable<Movie> {
-    return this.http.get<Movie>('http://www.omdbapi.com/?i=tt3896198&apikey=760c1292');
+  public getSingleMovie(id: string): Observable<MovieFull> {
+    return this.datasource.getSingleMovie(id);
   }
 
-  public getMovieCollection(): Observable<Movie[]>{
-    return null;
+  public getMovieCollection(collection: string): Observable<Movie[]>{
+    return this.datasource.getMovieCollection(collection);
   }
 }

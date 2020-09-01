@@ -9,14 +9,14 @@ exports.__esModule = true;
 exports.MovieService = void 0;
 var core_1 = require("@angular/core");
 var MovieService = /** @class */ (function () {
-    function MovieService(http) {
-        this.http = http;
+    function MovieService(datasource) {
+        this.datasource = datasource;
     }
     MovieService.prototype.getSingleMovie = function (id) {
-        return this.http.get('http://www.omdbapi.com/?i=tt3896198&apikey=760c1292');
+        return this.datasource.getSingleMovie(id);
     };
-    MovieService.prototype.getMovieCollection = function () {
-        return null;
+    MovieService.prototype.getMovieCollection = function (collection) {
+        return this.datasource.getMovieCollection(collection);
     };
     MovieService = __decorate([
         core_1.Injectable({

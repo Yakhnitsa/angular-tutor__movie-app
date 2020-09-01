@@ -8,12 +8,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.TheMovieDatasource = void 0;
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/common/http");
 var TheMovieDatasource = /** @class */ (function () {
-    function TheMovieDatasource() {
+    function TheMovieDatasource(http) {
+        this.http = http;
         this.apiKey = 'b8ecf22d78b37fb9ee17d60e699a6be5';
-        this.singleMovieRequest = 'https://api.themoviedb.org/3/movie/{id}';
+        this.movieRequest = 'https://api.themoviedb.org/3/movie/';
         this.posterPath = 'http://image.tmdb.org/t/p/w342';
     }
+    TheMovieDatasource.prototype.getMovieCollection = function (collection) {
+        var params = new http_1.HttpParams()
+            .set('apiKey', 'b8ecf22d78b37fb9ee17d60e699a6be5');
+        this.http.get(this.movieRequest + 'top_rated', { params: params })
+            .subscribe(function (data) {
+            console.log(data);
+        });
+        return undefined;
+    };
+    TheMovieDatasource.prototype.getSingleMovie = function (movieId) {
+        var params = new http_1.HttpParams()
+            .set('apiKey', 'b8ecf22d78b37fb9ee17d60e699a6be5');
+        this.http.get(this.movieRequest + movieId, { params: params })
+            .subscribe(function (data) {
+            console.log(data);
+        });
+        return undefined;
+    };
     TheMovieDatasource = __decorate([
         core_1.Injectable({
             providedIn: 'root'

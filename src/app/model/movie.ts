@@ -1,5 +1,6 @@
 export interface Movie {
   id: string;
+  imdb_id?: string;
   title: string;
   poster: string;
   rated: number;

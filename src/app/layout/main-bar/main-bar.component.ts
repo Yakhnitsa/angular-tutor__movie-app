@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MockedMovieService} from '../../model/mocked-movie.service';
-import {MovieCardData} from '../movie-card/movie-card.component';
+import {MovieService} from '../../model/movie.service';
+import {Movie, MovieFull} from '../../model/movie';
 
 @Component({
   selector: 'app-main-bar',
@@ -9,10 +9,10 @@ import {MovieCardData} from '../movie-card/movie-card.component';
 })
 export class MainBarComponent implements OnInit {
   search = 'horror';
-  public movies = null;
-  singleMovie = null;
+  public movies: Movie[];
+  singleMovie: MovieFull;
 
-  constructor(private movieService: MockedMovieService) { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
     this.loadMovies(this.search);
@@ -21,7 +21,7 @@ export class MainBarComponent implements OnInit {
 
   loadMovies(search): void {
     this.movieService.getMovieCollection(search).subscribe(data => {
-      this.movies = data.Search;
+      this.movies = data;
     });
   }
   loadSingleMovie(movieId): void{

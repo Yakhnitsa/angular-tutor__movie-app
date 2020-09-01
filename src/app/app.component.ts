@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {MockedMovieService} from './model/mocked-movie.service';
 
 @Component({
   selector: 'app-root',

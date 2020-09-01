@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MockedMovieService} from '../../model/mocked-movie.service';
+import {MovieService} from '../../model/movie.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,13 +9,13 @@ import {MockedMovieService} from '../../model/mocked-movie.service';
 export class SidebarComponent implements OnInit {
   public selectedCategory = null;
 
-  constructor( private movieService: MockedMovieService) { }
+  constructor( private movieService: MovieService) { }
 
   ngOnInit(): void {
   }
 
   get movieCategories(): string[]{
-    return this.movieService.getCategories();
+    return [];
   }
   changeCategory(category): void{
     console.log(category);
