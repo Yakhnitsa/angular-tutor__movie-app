@@ -10,13 +10,11 @@ import {Movie, MovieFull} from '../../model/movie';
 export class MainBarComponent implements OnInit {
   search = 'horror';
   public movies: Movie[];
-  singleMovie: MovieFull;
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
     this.loadMovies(this.search);
-    this.loadSingleMovie('some id...');
   }
 
   loadMovies(search): void {
@@ -24,10 +22,6 @@ export class MainBarComponent implements OnInit {
       this.movies = data;
     });
   }
-  loadSingleMovie(movieId): void{
-    this.movieService.getSingleMovie(movieId).subscribe( data => {
-      this.singleMovie = data;
-    });
-  }
+
 
 }

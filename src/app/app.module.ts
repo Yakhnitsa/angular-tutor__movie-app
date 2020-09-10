@@ -8,6 +8,8 @@ import { MainBarComponent } from './layout/main-bar/main-bar.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { SingleMovieComponent } from './layout/single-movie/single-movie.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { HttpClientModule } from '@angular/common/http';
     BottomBarComponent,
     MainBarComponent,
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    SingleMovieComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

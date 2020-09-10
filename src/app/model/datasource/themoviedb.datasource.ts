@@ -27,11 +27,9 @@ export class TheMovieDatasource implements Datasource{
     const params = new HttpParams()
       .set('api_key', 'b8ecf22d78b37fb9ee17d60e699a6be5');
 
-    this.http.get(this.movieRequest + movieId, {params})
-      .subscribe(data => {
-        console.log(data);
-      });
-    return undefined;
+    return this.http.get(this.movieRequest + movieId, {params})
+      .pipe(map(response => this.modifySingleMovie(response)));
+
   }
 
   modifyMovieCollection(data): Movie[]{
@@ -47,23 +45,24 @@ export class TheMovieDatasource implements Datasource{
     });
     return movies;
   }
-  modifySingleMovie(data): MovieFull{
+
+  modifySingleMovie(response): MovieFull{
     return {
-      id: '550',
-      title: 'Fight Club',
-      poster: 'http://image.tmdb.org/t/p/w342/k1lICEYRpJeFRIRfjxYwmpO9LTu.jpg',
-      rated: 8.4,
-      released: '1999-10-15',
-      tagline: 'Mischief. Mayhem. Soap',
-      overview: 'A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \\"fight clubs\\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.',
-      runtime: '139',
-      genre: 'Drama',
+      id: response.id,
+      title: response.title,
+      poster: this.posterPath + response.poster_path,
+      rated: response.vote_average,
+      released: response.release_date,
+      tagline: response.tagline,
+      overview: response.overview,
+      runtime: response.runtime,
+      genre: response.genres,
       director: '',
       writer: '',
       actors: '',
       plot: '',
-      language: 'English',
-      country: 'Germany, United States of America',
+      language: response.original_language,
+      country: '',
       awards: ''
     };
   }
