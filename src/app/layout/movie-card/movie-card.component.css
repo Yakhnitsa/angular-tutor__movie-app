@@ -1,5 +1,8 @@
 .rating-text{
-  font-size: 120%;
+  font-size: 110%;
   text-shadow: 1px 1px 2px darkred;
   color: whitesmoke;
+}
+.card.movie-card{
+  width: 250px;
 }

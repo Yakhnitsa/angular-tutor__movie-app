@@ -1,19 +1,16 @@
-<div class="card" style="width: 18rem;">
-  <div>
+<div class="card movie-card my-1">
+  <div class="card">
     <img class="card-img-top" [src]="movie.poster" alt="Movie poster">
-    <div class="card-img-overlay ">
-      <p class="card-text text-right rating-text">rating: {{movie.rated}}</p>
-      <!--<h5 class="card-title text-right mb-2 ">{{movie.title}}</h5>-->
-
+    <div class="card-img-overlay d-flex align-items-end flex-column">
+      <p class="card-text text-right rating-text mt-auto">rating: {{movie.rated}}</p>
     </div>
   </div>
+
   <div class="card-body">
     <h5 class="card-title text-center">{{movie.title}}.</h5>
     <p class="card-text">{{movie.released}}.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-
-
 </div>
 
 

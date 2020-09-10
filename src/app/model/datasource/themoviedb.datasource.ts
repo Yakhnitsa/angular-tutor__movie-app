@@ -35,7 +35,7 @@ export class TheMovieDatasource implements Datasource{
   }
 
   modifyMovieCollection(data): Movie[]{
-    const movies = new Array<Movie>();
+    const movies: Movie[] = [];
     data.results.forEach(item => {
       movies.push({
         id: item.id,
@@ -48,7 +48,24 @@ export class TheMovieDatasource implements Datasource{
     return movies;
   }
   modifySingleMovie(data): MovieFull{
-    return undefined;
+    return {
+      id: '550',
+      title: 'Fight Club',
+      poster: 'http://image.tmdb.org/t/p/w342/k1lICEYRpJeFRIRfjxYwmpO9LTu.jpg',
+      rated: 8.4,
+      released: '1999-10-15',
+      tagline: 'Mischief. Mayhem. Soap',
+      overview: 'A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \\"fight clubs\\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.',
+      runtime: '139',
+      genre: 'Drama',
+      director: '',
+      writer: '',
+      actors: '',
+      plot: '',
+      language: 'English',
+      country: 'Germany, United States of America',
+      awards: ''
+    };
   }
 
 }
