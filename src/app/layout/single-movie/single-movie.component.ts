@@ -16,11 +16,15 @@ export class SingleMovieComponent implements OnInit {
     private movieService: MovieService,
     private route: ActivatedRoute,
     private router: Router) {
-    router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.loadAwait = true;
-        this.fetchSingleMovie();
-      }
+    //
+    // router.events.subscribe((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //     this.loadAwait = true;
+    //     this.fetchSingleMovie();
+    //   }
+    // });
+    this.route.params.subscribe((param) => {
+      this.fetchSingleMovie();
     });
   }
 
