@@ -1,5 +1,6 @@
-<p>Single movie component</p>
-<div class="card movie-card my-1">
+
+
+<div *ngIf="!loadAwait; else loading" class="card movie-card my-1">
   <div class="card">
     <img class="card-img-top" [src]="movie.poster" alt="Movie poster">
     <div class="card-img-overlay d-flex align-items-end flex-column">
@@ -12,3 +13,6 @@
     <p class="card-text">{{movie.released}}</p>
   </div>
 </div>
+<ng-template #loading>
+  <div>Loading...</div>
+</ng-template>

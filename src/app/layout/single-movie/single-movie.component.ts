@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {MovieService} from '../../model/movie.service';
 import {MovieFull} from '../../model/movie';
 
@@ -10,21 +10,28 @@ import {MovieFull} from '../../model/movie';
 })
 export class SingleMovieComponent implements OnInit {
   public movie: MovieFull;
-  public anyMovie: any;
   public loadAwait: boolean;
 
   constructor(
     private movieService: MovieService,
     private route: ActivatedRoute,
-  ) { }
+    private router: Router) {
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.loadAwait = true;
+        this.fetchSingleMovie();
+      }
+    });
+  }
 
   ngOnInit(): void {
+    this.loadAwait = true;
     this.fetchSingleMovie();
   }
 
-  fetchSingleMovie(): void{
+  fetchSingleMovie(): void {
     const movieId = this.route.snapshot.paramMap.get('id');
-    this.movieService.getSingleMovie(movieId).subscribe( data => {
+    this.movieService.getSingleMovie(movieId).subscribe(data => {
       this.movie = data;
       this.loadAwait = false;
     });

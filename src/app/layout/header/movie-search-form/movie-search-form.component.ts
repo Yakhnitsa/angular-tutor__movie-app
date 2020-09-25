@@ -4,6 +4,7 @@ import {Movie} from '../../../model/movie';
 import {Observable, of} from 'rxjs';
 import {switchMap, catchError, map} from 'rxjs/operators';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-movie-search-form',
@@ -15,7 +16,8 @@ export class MovieSearchFormComponent implements OnInit {
   searchString: string;
   foundMovies: Movie[];
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -45,7 +47,9 @@ export class MovieSearchFormComponent implements OnInit {
   }
 
   jumpToMovie(event): void{
-    console.log(event);
+    if (event !== undefined){
+      this.router.navigate(['./single-movie/' + event.id]);
+    }
   }
 
 }
