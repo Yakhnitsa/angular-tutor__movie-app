@@ -12,12 +12,13 @@ export class TheMovieDatasource implements Datasource{
   private apiKey = 'b8ecf22d78b37fb9ee17d60e699a6be5';
   private movieRequest = 'https://api.themoviedb.org/3/movie/';
   private posterPath = 'http://image.tmdb.org/t/p/w342';
+  private searchRequest = 'https://api.themoviedb.org/3/search/movie';
 
   constructor(private http: HttpClient){}
 
   getMovieCollection(collection: string): Observable<Movie[]> {
     const params = new HttpParams()
-      .set('api_key', 'b8ecf22d78b37fb9ee17d60e699a6be5');
+      .set('api_key', this.apiKey);
 
     return this.http.get(this.movieRequest + 'top_rated', {params})
       .pipe(map(response => this.modifyMovieCollection(response)));
@@ -25,12 +26,23 @@ export class TheMovieDatasource implements Datasource{
 
   getSingleMovie(movieId: string): Observable<MovieFull> {
     const params = new HttpParams()
-      .set('api_key', 'b8ecf22d78b37fb9ee17d60e699a6be5');
+      .set('api_key', this.apiKey);
 
     return this.http.get(this.movieRequest + movieId, {params})
       .pipe(map(response => this.modifySingleMovie(response)));
 
   }
+  searchForMovie(searchQuery: string): Observable<Movie[]> {
+    let params = new HttpParams();
+
+    params = params.set('api_key', this.apiKey);
+    params = params.set('query', searchQuery);
+
+    return this.http.get(this.searchRequest, {params})
+      .pipe(map(response => this.modifyMovieCollection(response)));
+
+  }
+
 
   modifyMovieCollection(data): Movie[]{
     const movies: Movie[] = [];
@@ -40,7 +52,7 @@ export class TheMovieDatasource implements Datasource{
         title: item.title,
         poster: this.posterPath + item.poster_path,
         rated: item.vote_average,
-        released: ''
+        released: item.release_date
       });
     });
     return movies;

@@ -20,4 +20,8 @@ export class MovieService {
   public getMovieCollection(collection: string): Observable<Movie[]>{
     return this.datasource.getMovieCollection(collection);
   }
+
+  public searchForMovies(search: string): Observable<Movie[]>{
+    return this.datasource.searchForMovie(search);
+  }
 }

@@ -10,6 +10,8 @@ import { HeaderComponent } from './layout/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SingleMovieComponent } from './layout/single-movie/single-movie.component';
+import { MovieSearchFormComponent } from './layout/header/movie-search-form/movie-search-form.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { SingleMovieComponent } from './layout/single-movie/single-movie.compone
     MainBarComponent,
     SidebarComponent,
     HeaderComponent,
-    SingleMovieComponent
+    SingleMovieComponent,
+    MovieSearchFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
