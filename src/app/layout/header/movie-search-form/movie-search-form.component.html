@@ -1,0 +1,14 @@
+<form class="form-inline my-2 my-lg-0">
+
+  <input id="typeahead-prevent-manual-entry"  type="text" class="form-control"
+         [(ngModel)]="movie"
+         [ngModelOptions]="{standalone: true}"
+         (ngModelChange)="jumpToMovie($event)"
+         [ngbTypeahead]="movieSearch"
+         [inputFormatter]="formatter"
+         [resultFormatter]="formatter"
+         [editable]='false' />
+  <button
+    (click)="submitForm()"
+    class="btn btn-outline-success my-2 my-sm-0" >Найти</button>
+</form>

@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SingleMovieComponent } from './layout/single-movie/single-movie.component';
 import { MovieSearchFormComponent } from './layout/header/movie-search-form/movie-search-form.component';
 import {FormsModule} from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

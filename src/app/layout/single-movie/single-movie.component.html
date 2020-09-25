@@ -1,0 +1,14 @@
+<p>Single movie component</p>
+<div class="card movie-card my-1">
+  <div class="card">
+    <img class="card-img-top" [src]="movie.poster" alt="Movie poster">
+    <div class="card-img-overlay d-flex align-items-end flex-column">
+      <p class="card-text text-right rating-text mt-auto">rating: {{movie.rated}}</p>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title text-center">{{movie.title}}.</h5>
+    <p class="card-text">{{movie.released}}</p>
+  </div>
+</div>
