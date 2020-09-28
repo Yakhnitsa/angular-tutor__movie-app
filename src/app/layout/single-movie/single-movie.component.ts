@@ -14,8 +14,7 @@ export class SingleMovieComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
-    private route: ActivatedRoute,
-    private router: Router) {
+    private route: ActivatedRoute) {
     //
     // router.events.subscribe((event) => {
     //   if (event instanceof NavigationEnd) {
