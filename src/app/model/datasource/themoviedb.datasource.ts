@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Datasource} from './datasource';
-import {Movie, MovieFull} from '../movie';
+import {Movie, MovieFull, SearchResult} from '../movie';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
@@ -42,6 +42,24 @@ export class TheMovieDatasource implements Datasource{
       .pipe(map(response => this.modifyMovieCollection(response)));
 
   }
+  searchForMovieAdvanced(searchQuery: string, language?: string, year?: number, currentPage?: number): Observable<SearchResult> {
+    let params = new HttpParams();
+
+    params = params.set('api_key', this.apiKey);
+    params = params.set('query', searchQuery);
+    if (language){
+      params = params.set('language', language);
+    }
+    if (year){
+      params = params.set('year', year.toString(10));
+    }
+    if (currentPage){
+      params = params.set('page', currentPage.toString(10));
+    }
+
+    return this.http.get(this.searchRequest, {params})
+      .pipe(map(response => this.getSearchResult(response)));
+  }
 
 
   modifyMovieCollection(data): Movie[]{
@@ -52,10 +70,36 @@ export class TheMovieDatasource implements Datasource{
         title: item.title,
         poster: this.posterPath + item.poster_path,
         rated: item.vote_average,
-        released: item.release_date
+        released: item.release_date,
+        overview: item.overview
       });
     });
     return movies;
+  }
+
+  getSearchResult(data): SearchResult{
+    const searchResult: SearchResult = {
+      movies: [],
+      currentPage: 1,
+      totalPages: 1,
+      totalResults: 0,
+    };
+
+    searchResult.currentPage = data.page;
+    searchResult.totalPages = data.total_pages;
+    searchResult.totalResults = data.total_results;
+    searchResult.movies = this.modifyMovieCollection(data);
+    //
+    // data.results.forEach(item => {
+    //   searchResult.movies.push({
+    //     id: item.id,
+    //     title: item.title,
+    //     poster: this.posterPath + item.poster_path,
+    //     rated: item.vote_average,
+    //     released: item.release_date
+    //   });
+    // });
+    return searchResult;
   }
 
   modifySingleMovie(response): MovieFull{

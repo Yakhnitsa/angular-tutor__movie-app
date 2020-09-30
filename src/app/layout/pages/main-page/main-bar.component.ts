@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MovieService} from '../../model/movie.service';
-import {Movie, MovieFull} from '../../model/movie';
+import {MovieService} from '../../../model/movie.service';
+import {Movie, MovieFull} from '../../../model/movie';
 
 @Component({
   selector: 'app-main-bar',

@@ -23,7 +23,7 @@ export class MovieSearchFormComponent implements OnInit {
   }
 
   submitForm(): void{
-    console.log(this.searchString);
+    this.router.navigate(['/movie-search', { query: this.searchString }]);
   }
 
   formatter = (movie: Movie) => movie.title;

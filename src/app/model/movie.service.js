@@ -18,6 +18,9 @@ var MovieService = /** @class */ (function () {
     MovieService.prototype.getMovieCollection = function (collection) {
         return this.datasource.getMovieCollection(collection);
     };
+    MovieService.prototype.searchForMovies = function (search) {
+        return this.datasource.searchForMovie(search);
+    };
     MovieService = __decorate([
         core_1.Injectable({
             providedIn: 'root'

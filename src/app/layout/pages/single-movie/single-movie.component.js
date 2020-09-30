@@ -9,9 +9,32 @@ exports.__esModule = true;
 exports.SingleMovieComponent = void 0;
 var core_1 = require("@angular/core");
 var SingleMovieComponent = /** @class */ (function () {
-    function SingleMovieComponent() {
+    function SingleMovieComponent(movieService, route) {
+        var _this = this;
+        this.movieService = movieService;
+        this.route = route;
+        //
+        // router.events.subscribe((event) => {
+        //   if (event instanceof NavigationEnd) {
+        //     this.loadAwait = true;
+        //     this.fetchSingleMovie();
+        //   }
+        // });
+        this.route.params.subscribe(function (param) {
+            _this.fetchSingleMovie();
+        });
     }
     SingleMovieComponent.prototype.ngOnInit = function () {
+        this.loadAwait = true;
+        this.fetchSingleMovie();
+    };
+    SingleMovieComponent.prototype.fetchSingleMovie = function () {
+        var _this = this;
+        var movieId = this.route.snapshot.paramMap.get('id');
+        this.movieService.getSingleMovie(movieId).subscribe(function (data) {
+            _this.movie = data;
+            _this.loadAwait = false;
+        });
     };
     SingleMovieComponent = __decorate([
         core_1.Component({

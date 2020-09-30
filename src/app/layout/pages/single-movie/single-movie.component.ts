@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {MovieService} from '../../model/movie.service';
-import {MovieFull} from '../../model/movie';
+import {MovieService} from '../../../model/movie.service';
+import {MovieFull} from '../../../model/movie';
 
 @Component({
   selector: 'app-single-movie',

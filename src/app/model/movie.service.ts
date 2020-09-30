@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {Movie, MovieFull} from './movie';
+import {Movie, MovieFull, SearchResult} from './movie';
 import {MockedDatasource} from './datasource/mocked.datasource';
 import {TheMovieDatasource} from './datasource/themoviedb.datasource';
 
@@ -21,7 +21,11 @@ export class MovieService {
     return this.datasource.getMovieCollection(collection);
   }
 
-  public searchForMovies(search: string): Observable<Movie[]>{
-    return this.datasource.searchForMovie(search);
+  public searchForMovies(searchQuery: string): Observable<Movie[]>{
+    return this.datasource.searchForMovie(searchQuery);
+  }
+
+  public searchForMoviesAdvanced(searchQuery: string, language?: string, year?: number, currentPage?: number): Observable<SearchResult>{
+    return this.datasource.searchForMovieAdvanced(searchQuery, language , year , currentPage);
   }
 }

@@ -5,11 +5,11 @@ export interface Movie {
   poster: string;
   rated: number;
   released: string;
+  overview?: string;
 }
 
 export interface MovieFull extends Movie{
   tagline: string;
-  overview: string;
   runtime: string;
   genre: string;
   director: string;
@@ -19,4 +19,11 @@ export interface MovieFull extends Movie{
   language: string;
   country: string;
   awards: string;
+}
+
+export interface SearchResult{
+  movies: Movie[];
+  currentPage: number;
+  totalPages: number;
+  totalResults: number;
 }
