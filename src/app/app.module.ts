@@ -15,6 +15,7 @@ import {FormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieSearchPageComponent } from './layout/pages/movie-search-page/movie-search-page.component';
 import { FoundMovieComponent } from './layout/pages/movie-search-page/found-movie/found-movie.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FoundMovieComponent } from './layout/pages/movie-search-page/found-movi
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

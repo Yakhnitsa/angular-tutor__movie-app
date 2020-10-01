@@ -1,6 +1,25 @@
-img{
-  /*max-height:180px;*/
-  /*max-width:120px;*/
-  /*height:auto;*/
-  /*width:auto;*/
+
+.movie-component {
+  border-top: 1px solid #404040;
+  padding: 5px 20px 10px;
+  /*float: left;*/
+
+  /*position: relative;*/
+  border-left: 1px solid #404040;
 }
+.movie-title {
+  padding: 10px 0 12px;
+  color: #fff;
+  position: relative;
+}
+.movie-poster{
+  display: block;
+}
+
+.movie-details{
+  display: inline;
+  padding: 5px;
+  margin-left: 10px;
+  flex: 1;
+}
+

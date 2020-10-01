@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MovieService} from '../../../model/movie.service';
 import {Movie} from '../../../model/movie';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-movie-search-page',
@@ -9,6 +10,11 @@ import {Movie} from '../../../model/movie';
   styleUrls: ['./movie-search-page.component.css']
 })
 export class MovieSearchPageComponent implements OnInit {
+  searchForm = new FormGroup({
+    query: new FormControl(''),
+    year: new FormControl(''),
+    language: new FormControl(''),
+  });
   query: string;
   language: string;
   year: number;
@@ -24,22 +30,31 @@ export class MovieSearchPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log(params);
       if (params.query){
-        this.query = params.query;
+        this.searchForm.patchValue({
+          query: params.query
+        });
         this.startSearch();
       }
     });
   }
   startSearch(): void{
-    this.movieService.searchForMoviesAdvanced(this.query, this.language, this.year, this.currentPage)
+    this.movieService.searchForMoviesAdvanced(
+      this.searchForm.value.query,
+      this.searchForm.value.language,
+      this.searchForm.value.year,
+      this.currentPage)
+
       .subscribe(result => {
-        console.log(result);
         this.movies = result.movies;
         this.currentPage = result.currentPage;
         this.totalPages = result.totalPages;
         this.totalResults = result.totalResults;
       });
+  }
+  test(): void{
+    console.log(this.searchForm.value);
+    this.startSearch();
   }
 
 }

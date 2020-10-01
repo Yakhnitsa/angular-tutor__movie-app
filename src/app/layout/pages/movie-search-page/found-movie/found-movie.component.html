@@ -1,19 +1,30 @@
-<div class="row">
-    <div class="col-2">
-      <div class="card">
-        <img class="card-img-top" [src]="movie.poster" alt="Movie poster">
-      </div>
-    </div>
-    <div class="col">
-      <div class="row">
-        <span>Movie title:</span> {{movie.title}}
-      </div>
-      <div class="row">
-        <span>Rating:</span> {{movie.rated}}
-      </div>
-      <div class="row">
-        <span>About:</span> {{movie.overview}}
-      </div>
+<div class="container-fluid movie-component">
+  <div class="row">
+    <a [routerLink]="['/single-movie/', movie.id]">
+      <h3>{{movie.title}}</h3>
+    </a>
+  </div>
+
+
+  <div class="row">
+
+    <div class="rounded float-left">
+      <a [routerLink]="['/single-movie/', movie.id]">
+        <img alt="no poster found"
+             [src]="movie.poster"
+             width="150" height="200"
+             [title]="movie.title">
+      </a>
     </div>
 
+    <div class="movie-details">
+      <p>Overview: </p>
+      <div>{{movie.overview}}</div>
+      <br><br>
+    </div>
+
+  </div>
+
+
 </div>
+

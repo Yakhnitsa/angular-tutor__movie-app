@@ -1,11 +1,15 @@
 <div class="container-fluid">
-  <form>
+  <form
+        [formGroup]="searchForm"
+        (ngSubmit)="test()">
     <div class="form-group row">
       <div class="form-group col-7">
         <div class="form-group row">
           <label for="searchQueryParam" class="col-sm-2 col-form-label col-form-label-sm">Поиск</label>
           <div class="col-md-10">
-            <input type="text" class="form-control form-control-sm" id="searchQueryParam" placeholder="поиск...">
+            <input type="text"
+                   formControlName="query"
+                   class="form-control form-control-sm" id="searchQueryParam" placeholder="поиск...">
           </div>
         </div>
       </div>
@@ -13,17 +17,21 @@
         <div class="form-group row">
           <label for="yearSearchParam" class="col-md-4 col-form-label col-form-label-sm">Год</label>
           <div class="col-md-8">
-            <input type="number" class="form-control form-control-sm" id="yearSearchParam" placeholder="год">
+            <input type="number"
+                   formControlName="year"
+                   class="form-control form-control-sm" id="yearSearchParam" placeholder="год">
           </div>
         </div>
       </div>
     </div>
+    <div class="from-row">
+      <button class="btn btn-secondary" type="submit">Update Profile</button>
+    </div>
   </form>
 
-  <ul class="list-group">
-    <li class="list-group-item">
-      <app-found-movie *ngFor="let movie of movies" [movie]="movie"></app-found-movie>
-    </li>
-  </ul>
+
+  <div class="container-fluid mt-3">
+    <app-found-movie *ngFor="let movie of movies" [movie]="movie"></app-found-movie>
+  </div>
 
 </div>
