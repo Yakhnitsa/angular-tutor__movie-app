@@ -1,5 +1,7 @@
 .app-header{
   position: fixed;
+  color: #fff;
+
   top: 0;
   width: 100%;
 }
@@ -7,4 +9,11 @@
 
 .app-content{
   padding-top: 60px;
+  background: #2b2b2b;
+
+  color: #fff;
+}
+.container-fluid{
+  padding-right: 0;
+  padding-left: 0;
 }
