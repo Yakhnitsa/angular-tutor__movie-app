@@ -17,6 +17,7 @@ import { MovieSearchPageComponent } from './layout/pages/movie-search-page/movie
 import { FoundMovieComponent } from './layout/pages/movie-search-page/found-movie/found-movie.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TvShowsComponent } from './layout/pages/tv-shows/tv-shows.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TvShowsComponent } from './layout/pages/tv-shows/tv-shows.component';
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

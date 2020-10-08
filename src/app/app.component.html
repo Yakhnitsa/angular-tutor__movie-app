@@ -7,8 +7,8 @@
               class="btn btn-info toggle-button"
               (click)="toggleSidebar()"
               id="sidebarCollapse" >
-        <i class="fab fa-accessible-icon"></i>
-        <span>Show/hide</span>
+        <fa-icon [icon]="menuIcon"></fa-icon>
+        <span> show/hide</span>
       </button>
 
       <router-outlet></router-outlet>
