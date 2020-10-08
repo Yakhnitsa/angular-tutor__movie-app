@@ -28,4 +28,8 @@ export class MovieService {
   public searchForMoviesAdvanced(searchQuery: string, language?: string, year?: number, currentPage?: number): Observable<SearchResult>{
     return this.datasource.searchForMovieAdvanced(searchQuery, language , year , currentPage);
   }
+
+  public getTvShowCollection(collection: string): Observable<Movie[]>{
+    return this.datasource.getTvShowCollection(collection);
+  }
 }

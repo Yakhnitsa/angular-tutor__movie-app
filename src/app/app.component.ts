@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-movie-app';
+  sidebarHidden = false;
   constructor() {
+  }
+
+  toggleSidebar(): void{
+    this.sidebarHidden = !this.sidebarHidden;
   }
 }

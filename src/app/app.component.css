@@ -1,19 +1,56 @@
 .app-header{
   position: fixed;
   color: #fff;
-
   top: 0;
   width: 100%;
 }
 
+.form-control{
+  background-color: gray!important;
+}
+
+.app-header .form-control {
+  background-color: blue!important;
+}
 
 .app-content{
-  padding-top: 60px;
+  padding-top: 55px;
   background: #2b2b2b;
-
   color: #fff;
+  display: flex;
+  align-items: stretch;
 }
+
 .container-fluid{
   padding-right: 0;
   padding-left: 0;
 }
+
+app-sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  transition: all 0.3s;
+}
+
+app-sidebar.toggled{
+  margin-left: -250px;
+}
+
+
+
+@media (max-width: 970px) {
+
+  app-sidebar {
+    margin-left: -250px;
+  }
+  app-sidebar.toggled {
+    margin-left: 0;
+  }
+
+  .toggle-button span {
+    display: none;
+  }
+}
+
+
+

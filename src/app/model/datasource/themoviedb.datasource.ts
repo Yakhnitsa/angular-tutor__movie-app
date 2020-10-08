@@ -11,6 +11,7 @@ import {map} from 'rxjs/operators';
 export class TheMovieDatasource implements Datasource{
   private apiKey = 'b8ecf22d78b37fb9ee17d60e699a6be5';
   private movieRequest = 'https://api.themoviedb.org/3/movie/';
+  private tvSowRequest = 'https://api.themoviedb.org/3/tv/';
   private posterPath = 'http://image.tmdb.org/t/p/w342';
   private searchRequest = 'https://api.themoviedb.org/3/search/movie';
 
@@ -20,7 +21,15 @@ export class TheMovieDatasource implements Datasource{
     const params = new HttpParams()
       .set('api_key', this.apiKey);
 
-    return this.http.get(this.movieRequest + 'top_rated', {params})
+    return this.http.get(this.movieRequest + collection, {params})
+      .pipe(map(response => this.modifyMovieCollection(response)));
+  }
+
+  getTvShowCollection(collection: string): Observable<Movie[]> {
+    const params = new HttpParams()
+      .set('api_key', this.apiKey);
+
+    return this.http.get(this.tvSowRequest + collection, {params})
       .pipe(map(response => this.modifyMovieCollection(response)));
   }
 
@@ -89,16 +98,7 @@ export class TheMovieDatasource implements Datasource{
     searchResult.totalPages = data.total_pages;
     searchResult.totalResults = data.total_results;
     searchResult.movies = this.modifyMovieCollection(data);
-    //
-    // data.results.forEach(item => {
-    //   searchResult.movies.push({
-    //     id: item.id,
-    //     title: item.title,
-    //     poster: this.posterPath + item.poster_path,
-    //     rated: item.vote_average,
-    //     released: item.release_date
-    //   });
-    // });
+
     return searchResult;
   }
 

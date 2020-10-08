@@ -1,21 +1,18 @@
 <div class="container-fluid">
   <app-header class="fixed-top app-header"></app-header>
   <div class="container-fluid app-content">
-    <div class="row mt-2">
-      <div class="col-3">
-        <app-sidebar></app-sidebar>
-      </div>
-      <div class="col-9">
-        <div class="row">
-          <router-outlet></router-outlet>
-          <!--<app-main-bar></app-main-bar>-->
-        </div>
-        <div class="row">
-          <app-bottom-bar></app-bottom-bar>
-        </div>
-      </div>
-  </div>
+    <app-sidebar [class]="{'toggled': sidebarHidden}"></app-sidebar>
+    <div class="app-mainbar m-2">
+      <button type="button"
+              class="btn btn-info toggle-button"
+              (click)="toggleSidebar()"
+              id="sidebarCollapse" >
+        <i class="fab fa-accessible-icon"></i>
+        <span>Show/hide</span>
+      </button>
 
+      <router-outlet></router-outlet>
+    </div>
 
   </div>
 </div>

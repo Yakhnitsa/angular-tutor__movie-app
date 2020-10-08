@@ -16,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieSearchPageComponent } from './layout/pages/movie-search-page/movie-search-page.component';
 import { FoundMovieComponent } from './layout/pages/movie-search-page/found-movie/found-movie.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TvShowsComponent } from './layout/pages/tv-shows/tv-shows.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SingleMovieComponent,
     MovieSearchFormComponent,
     MovieSearchPageComponent,
-    FoundMovieComponent
+    FoundMovieComponent,
+    TvShowsComponent
   ],
   imports: [
     BrowserModule,
