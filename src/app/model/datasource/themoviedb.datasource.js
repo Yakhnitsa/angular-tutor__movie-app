@@ -15,6 +15,7 @@ var TheMovieDatasource = /** @class */ (function () {
         this.http = http;
         this.apiKey = 'b8ecf22d78b37fb9ee17d60e699a6be5';
         this.movieRequest = 'https://api.themoviedb.org/3/movie/';
+        this.tvSowRequest = 'https://api.themoviedb.org/3/tv/';
         this.posterPath = 'http://image.tmdb.org/t/p/w342';
         this.searchRequest = 'https://api.themoviedb.org/3/search/movie';
     }
@@ -22,7 +23,14 @@ var TheMovieDatasource = /** @class */ (function () {
         var _this = this;
         var params = new http_1.HttpParams()
             .set('api_key', this.apiKey);
-        return this.http.get(this.movieRequest + 'top_rated', { params: params })
+        return this.http.get(this.movieRequest + collection, { params: params })
+            .pipe(operators_1.map(function (response) { return _this.modifyMovieCollection(response); }));
+    };
+    TheMovieDatasource.prototype.getTvShowCollection = function (collection) {
+        var _this = this;
+        var params = new http_1.HttpParams()
+            .set('api_key', this.apiKey);
+        return this.http.get(this.tvSowRequest + collection, { params: params })
             .pipe(operators_1.map(function (response) { return _this.modifyMovieCollection(response); }));
     };
     TheMovieDatasource.prototype.getSingleMovie = function (movieId) {
@@ -40,6 +48,23 @@ var TheMovieDatasource = /** @class */ (function () {
         return this.http.get(this.searchRequest, { params: params })
             .pipe(operators_1.map(function (response) { return _this.modifyMovieCollection(response); }));
     };
+    TheMovieDatasource.prototype.searchForMovieAdvanced = function (searchQuery, language, year, currentPage) {
+        var _this = this;
+        var params = new http_1.HttpParams();
+        params = params.set('api_key', this.apiKey);
+        params = params.set('query', searchQuery);
+        if (language) {
+            params = params.set('language', language);
+        }
+        if (year) {
+            params = params.set('year', year.toString(10));
+        }
+        if (currentPage) {
+            params = params.set('page', currentPage.toString(10));
+        }
+        return this.http.get(this.searchRequest, { params: params })
+            .pipe(operators_1.map(function (response) { return _this.getSearchResult(response); }));
+    };
     TheMovieDatasource.prototype.modifyMovieCollection = function (data) {
         var _this = this;
         var movies = [];
@@ -49,10 +74,24 @@ var TheMovieDatasource = /** @class */ (function () {
                 title: item.title,
                 poster: _this.posterPath + item.poster_path,
                 rated: item.vote_average,
-                released: item.release_date
+                released: item.release_date,
+                overview: item.overview
             });
         });
         return movies;
+    };
+    TheMovieDatasource.prototype.getSearchResult = function (data) {
+        var searchResult = {
+            movies: [],
+            currentPage: 1,
+            totalPages: 1,
+            totalResults: 0,
+        };
+        searchResult.currentPage = data.page;
+        searchResult.totalPages = data.total_pages;
+        searchResult.totalResults = data.total_results;
+        searchResult.movies = this.modifyMovieCollection(data);
+        return searchResult;
     };
     TheMovieDatasource.prototype.modifySingleMovie = function (response) {
         return {

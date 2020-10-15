@@ -18,8 +18,14 @@ var MovieService = /** @class */ (function () {
     MovieService.prototype.getMovieCollection = function (collection) {
         return this.datasource.getMovieCollection(collection);
     };
-    MovieService.prototype.searchForMovies = function (search) {
-        return this.datasource.searchForMovie(search);
+    MovieService.prototype.searchForMovies = function (searchQuery) {
+        return this.datasource.searchForMovie(searchQuery);
+    };
+    MovieService.prototype.searchForMoviesAdvanced = function (searchQuery, language, year, currentPage) {
+        return this.datasource.searchForMovieAdvanced(searchQuery, language, year, currentPage);
+    };
+    MovieService.prototype.getTvShowCollection = function (collection) {
+        return this.datasource.getTvShowCollection(collection);
     };
     MovieService = __decorate([
         core_1.Injectable({

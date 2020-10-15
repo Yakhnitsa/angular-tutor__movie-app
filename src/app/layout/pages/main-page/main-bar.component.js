@@ -9,16 +9,24 @@ exports.__esModule = true;
 exports.MainBarComponent = void 0;
 var core_1 = require("@angular/core");
 var MainBarComponent = /** @class */ (function () {
-    function MainBarComponent(movieService) {
+    function MainBarComponent(movieService, route) {
+        var _this = this;
         this.movieService = movieService;
-        this.search = 'horror';
+        this.route = route;
+        this.defaultCollection = 'top_rated';
+        this.route.params.subscribe(function (param) {
+            _this.fetchMovieCollection();
+        });
     }
     MainBarComponent.prototype.ngOnInit = function () {
-        this.loadMovies(this.search);
+        // this.fetchMovieCollection();
     };
-    MainBarComponent.prototype.loadMovies = function (search) {
+    MainBarComponent.prototype.fetchMovieCollection = function () {
         var _this = this;
-        this.movieService.getMovieCollection(search).subscribe(function (data) {
+        var collection = this.route.snapshot.paramMap.get('collection');
+        collection = collection === null ? this.defaultCollection : collection;
+        console.log(collection);
+        this.movieService.getMovieCollection(collection).subscribe(function (data) {
             _this.movies = data;
         });
     };
