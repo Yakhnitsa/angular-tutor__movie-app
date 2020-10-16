@@ -19,6 +19,7 @@ export interface MovieFull extends Movie{
   language: string;
   country: string;
   awards: string;
+  homepage: string;
 }
 
 export interface SearchResult{

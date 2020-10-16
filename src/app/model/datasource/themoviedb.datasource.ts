@@ -103,6 +103,7 @@ export class TheMovieDatasource implements Datasource{
   }
 
   modifySingleMovie(response): MovieFull{
+    console.log(response);
     return {
       id: response.id,
       title: response.title,
@@ -118,8 +119,9 @@ export class TheMovieDatasource implements Datasource{
       actors: '',
       plot: '',
       language: response.original_language,
-      country: '',
-      awards: ''
+      country: response.production_countries,
+      awards: '',
+      homepage: response.homepage
     };
   }
 

@@ -1,17 +1,37 @@
 
 
-<div *ngIf="!loadAwait; else loading" class="card movie-card my-1">
-  <div class="card">
-    <img class="card-img-top" [src]="movie.poster" alt="Movie poster">
-    <div class="card-img-overlay d-flex align-items-end flex-column">
-      <p class="card-text text-right rating-text mt-auto">rating: {{movie.rated}}</p>
+<div *ngIf="!loadAwait; else loading" class="container-fluid mt-2">
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-xl-3">
+      <img class="img-fluid" [src]="movie.poster" alt="Movie poster">
+    </div>
+    <div class="col-sm-6 col-md-8 col-xl-9">
+      <h3>{{movie.title}}</h3>
+      <h5>Slogan</h5>
+      <p>{{movie.tagline}}</p>
+      <h5>Overview:</h5>
+      <p>{{movie.overview}}</p>
+      <h5>Released:</h5>
+      <p>{{movie.released}}</p>
+      <h5>Actors:</h5>
+      <p>{{movie.actors}}</p>
+      <h5>Country:</h5>
+      <p>{{movie.country}}</p>
     </div>
   </div>
 
-  <div class="card-body">
-    <h5 class="card-title text-center">{{movie.title}}.</h5>
-    <p class="card-text">{{movie.released}}</p>
-  </div>
+  <!---->
+  <!--<div class="card">-->
+    <!--<img class="card-img-top" [src]="movie.poster" alt="Movie poster">-->
+    <!--<div class="card-img-overlay d-flex align-items-end flex-column">-->
+      <!--<p class="card-text text-right rating-text mt-auto">rating: {{movie.rated}}</p>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--<div class="card-body">-->
+    <!--<h5 class="card-title text-center">{{movie.title}}.</h5>-->
+    <!--<p class="card-text">{{movie.released}}</p>-->
+  <!--</div>-->
 </div>
 <ng-template #loading>
   <div>Loading...</div>

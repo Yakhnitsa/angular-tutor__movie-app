@@ -67,7 +67,8 @@ export class MockedDatasource implements Datasource {
     plot: '',
     language: 'English',
     country: 'Germany, United States of America',
-    awards: ''
+    awards: '',
+    homepage: 'http://www.foxmovies.com/movies/fight-club'
   };
 
   constructor() {

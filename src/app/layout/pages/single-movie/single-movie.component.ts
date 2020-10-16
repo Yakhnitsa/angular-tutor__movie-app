@@ -29,7 +29,7 @@ export class SingleMovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAwait = true;
-    this.fetchSingleMovie();
+    // this.fetchSingleMovie();
   }
 
   fetchSingleMovie(): void {
@@ -37,7 +37,7 @@ export class SingleMovieComponent implements OnInit {
     this.movieService.getSingleMovie(movieId).subscribe(data => {
       this.movie = data;
       this.loadAwait = false;
+      console.log(this.movie);
     });
   }
-
 }

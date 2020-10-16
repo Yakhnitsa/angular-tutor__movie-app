@@ -7,7 +7,6 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { SingleMovieComponent } from './layout/pages/single-movie/single-movie.component';
 import { MovieSearchFormComponent } from './layout/header/movie-search-form/movie-search-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -16,7 +15,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 import {MainPageModule} from './layout/pages/main-page/main-page.module';
-import {MovieSearchPageModule} from './layout/pages/movie-search-page/movie-search-page-module';
+import {MovieSearchPageModule} from './layout/pages/movie-search-page/movie-search-page.module';
+import {SingleMovieModule} from './layout/pages/single-movie/single-movie.module';
 
 
 @NgModule({
@@ -25,7 +25,6 @@ import {MovieSearchPageModule} from './layout/pages/movie-search-page/movie-sear
     BottomBarComponent,
     SidebarComponent,
     HeaderComponent,
-    SingleMovieComponent,
     MovieSearchFormComponent,
     TvShowsComponent
   ],
@@ -38,7 +37,8 @@ import {MovieSearchPageModule} from './layout/pages/movie-search-page/movie-sear
     ReactiveFormsModule,
     FontAwesomeModule,
     MainPageModule,
-    MovieSearchPageModule
+    MovieSearchPageModule,
+    SingleMovieModule
   ],
   providers: [],
   bootstrap: [AppComponent]

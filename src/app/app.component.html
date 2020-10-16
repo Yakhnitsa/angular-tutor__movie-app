@@ -2,11 +2,11 @@
   <app-header class="fixed-top app-header"></app-header>
   <div class="container-fluid app-content">
     <app-sidebar [class]="{'toggled': sidebarHidden}"></app-sidebar>
-    <div class="app-mainbar m-2">
+    <div class="container-fluid m-2">
       <button type="button"
               class="btn btn-info toggle-button"
               (click)="toggleSidebar()"
-              id="sidebarCollapse" >
+              id="sidebarCollapse">
         <fa-icon [icon]="menuIcon"></fa-icon>
         <span> show/hide</span>
       </button>
