@@ -119,7 +119,7 @@ export class TheMovieDatasource implements Datasource{
       actors: '',
       plot: '',
       language: response.original_language,
-      country: response.production_countries,
+      countries: response.production_countries.map(country => country.name),
       awards: '',
       homepage: response.homepage
     };

@@ -16,8 +16,11 @@
       <h5>Actors:</h5>
       <p>{{movie.actors}}</p>
       <h5>Country:</h5>
-      <p>{{movie.country}}</p>
+      <p><span *ngFor="let country of movie.countries">{{country}}, </span></p>
     </div>
+  </div>
+  <div class="sticky-bottom">
+    <app-similar-movies></app-similar-movies>
   </div>
 
   <!---->

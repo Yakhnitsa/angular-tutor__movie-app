@@ -11,7 +11,7 @@
       <div class="card-body">
         <h5 class="card-title">{{movie.title}}</h5>
         <p class="card-text">{{movie.imdb_id}}</p>
-        <p class="card-text"><strong>Released: </strong>{{movie.released}}</p>
+        <p class="card-text"><strong>Released: </strong>{{movie.released | date: 'MMMM d, yyyy'}}</p>
       </div>
       <div class="card-footer">
         <a  routerLink="/single-movie/{{movie.id}}" class="btn btn-secondary">Details</a>

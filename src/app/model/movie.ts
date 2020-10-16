@@ -17,7 +17,7 @@ export interface MovieFull extends Movie{
   actors: string;
   plot: string;
   language: string;
-  country: string;
+  countries: string[];
   awards: string;
   homepage: string;
 }
