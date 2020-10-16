@@ -1,4 +1,4 @@
-<div class="card movie-card my-1">
+<div class="card movie-card m-1">
   <div class="card mt-2">
     <img width="160" height="auto" class="card-img-top" [src]="movie.poster" alt="Movie poster">
     <div class="card-img-overlay d-flex align-items-end flex-column">
@@ -6,10 +6,12 @@
     </div>
   </div>
 
-  <div class="card-block">
+  <div class="card-body">
     <h5 class="card-title text-center">{{movie.title}}</h5>
     <p class="card-text text-muted">{{movie.released}}.</p>
-    <a  routerLink="/single-movie/{{movie.id}}" class="btn btn-primary">Details</a>
+    <div class="card-footer">
+      <a  routerLink="/single-movie/{{movie.id}}" class="btn btn-primary">Details</a>
+    </div>
   </div>
 </div>
 
